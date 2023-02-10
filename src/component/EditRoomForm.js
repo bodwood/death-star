@@ -20,10 +20,15 @@ function EditRoomForm(props) {
 
   return (
     <FormTemplate
-      formSubmissionHandler={handleEditTeaFormSubmission}
-      buttonText='Update Tea'
-      tea={tea}
+      formSubmissionHandler={handleEditRoomFormSubmission}
+      buttonText='Update Room'
+      room={room}
       editing={true}
     />
   )
+}
+
+EditRoomForm.propTypes = {
+  onEditRoom: PropTypes.func,
+  room: PropTypes.object,
 }
