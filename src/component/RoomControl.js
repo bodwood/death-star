@@ -54,6 +54,23 @@ export default class RoomControl extends React.Component {
     })
   }
 
+  handleAddingNewRoomToList = (newRoom) => {
+   const updatedRoomList = this.state.mainRoomList.concat(newRoom);
+   this.setState({mainRoomList: updatedRoomList.sort((a,b) => a.name.localeCompare(b.name))});
+   this.setState({formVisibleOnPage: false});
+  }
+
+  handleSellingRoom = (id) => {
+   let roomToEdit = this.state.mainRoomList.filter(room => room.id === id)[0];
+   roomToEdit.stock > 0 ? roomToEdit.stock-- : alert("Room is not available");
+   const editedRoomList = this.state.mainRoomList
+    .filter(room => room.id !== id)
+    .concat(roomToEdit);
+    this.setState({
+     mainRoomList: editedRoomList.sort((a,b) => a.name.localeCompare(b.name))
+    })
+  }
+
   render() {
     let currentlyVisibleState = null
     let buttonText = null
@@ -67,6 +84,9 @@ export default class RoomControl extends React.Component {
     } else if(this.state.selectedRoom != null) {
       currentlyVisibleState = <RoomDetail room={this.state.selectedRoom} onClickingDelete={this.handleDeletingRoom} onClickingEdit={this.handleEditClick} onClickingSell={this.handleSellingRoom} />
       buttonText= 'Return to Room List';
+    } else if(this.state.formVisibleOnPage) {
+     currentlyVisibleState = <NewRoomForm onNewRoomCreation={this.handleAddingNewRoomToList} />
+     buttonText= 'Return to Room List'
     }
   }
 }
