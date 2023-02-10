@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Room = (props) => {
+function Room(props){
   return (
     <div className="room-card">
      <div className="room-card-details" onClick={() => props.roomClicked(props.id)}>
