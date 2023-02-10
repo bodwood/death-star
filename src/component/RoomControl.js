@@ -10,7 +10,9 @@ export default class RoomControl extends React.Component {
     super(props)
     this.state = {
       formVisibleOnPage: false,
-      mainRoomList: dataDefault.data.room.sort((a, b) => a.name.localeCompare(b.name)),
+      mainRoomList: dataDefault.data.room.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
       selectedRoom: null,
       editing: false,
     }
@@ -31,9 +33,13 @@ export default class RoomControl extends React.Component {
   }
 
   handleDeletingRoom = (id) => {
-    const updatedRoomList = this.state.mainRoomList.filter(room => room.id != id)
+    const updatedRoomList = this.state.mainRoomList.filter(
+      (room) => room.id !== id
+    )
     this.setState({
-      mainRoomList: updatedRoomList.sort((a, b) => a.name.localeCompare(b.name)),
+      mainRoomList: updatedRoomList.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
       selectedRoom: null,
     })
   }
@@ -44,7 +50,7 @@ export default class RoomControl extends React.Component {
 
   handleEditingRoomInList = (roomToEdit) => {
     const editedRoomList = this.state.mainRoomList
-      .filter(room => room.id !== this.state.selectedRoom.id)
+      .filter((room) => room.id !== this.state.selectedRoom.id)
       .concat(roomToEdit)
     this.setState({
       mainRoomList: editedRoomList.sort((a, b) => a.name.localeCompare(b.name)),
@@ -55,22 +61,26 @@ export default class RoomControl extends React.Component {
 
   handleAddingNewRoomToList = (newRoom) => {
     const updatedRoomList = this.state.mainRoomList.concat(newRoom)
-    this.setState({mainRoomList: updatedRoomList.sort((a, b) => a.name.localeCompare(b.name))})
+    this.setState({
+      mainRoomList: updatedRoomList.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
+    })
     this.setState({ formVisibleOnPage: false })
   }
 
   handleChangingSelectedRoom = (id) => {
     const selectedRoom = this.state.mainRoomList.filter(
-      room => room.id === id
+      (room) => room.id === id
     )[0]
     this.setState({ selectedRoom: selectedRoom })
   }
 
   handleSellingRoom = (id) => {
-    let roomToEdit = this.state.mainRoomList.filter(room => room.id === id)[0]
+    let roomToEdit = this.state.mainRoomList.filter((room) => room.id === id)[0]
     roomToEdit.stock > 0 ? roomToEdit.stock-- : alert('Room is not available')
     const editedRoomList = this.state.mainRoomList
-      .filter(room => room.id !== id)
+      .filter((room) => room.id !== id)
       .concat(roomToEdit)
     this.setState({
       mainRoomList: editedRoomList.sort((a, b) => a.name.localeCompare(b.name)),
@@ -81,27 +91,30 @@ export default class RoomControl extends React.Component {
     let currentlyVisibleState = null
     let buttonText = null
     if (this.state.editing) {
-      currentlyVisibleState = 
+      currentlyVisibleState = (
         <EditRoomForm
           room={this.state.selectedRoom}
           onEditRoom={this.handleEditingRoomInList}
         />
+      )
       buttonText = 'Return to Room List'
     } else if (this.state.selectedRoom != null) {
-      currentlyVisibleState = 
+      currentlyVisibleState = (
         <RoomDetail
           room={this.state.selectedRoom}
           onClickingDelete={this.handleDeletingRoom}
           onClickingEdit={this.handleEditClick}
           onClickingSell={this.handleSellingRoom}
         />
+      )
       buttonText = 'Return to Room List'
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = 
+      currentlyVisibleState = (
         <NewRoomForm onNewRoomCreation={this.handleAddingNewRoomToList} />
+      )
       buttonText = 'Return to Room List'
     } else {
-      currentlyVisibleState = 
+      currentlyVisibleState = (
         <RoomList
           onRoomSelection={this.handleChangingSelectedRoom}
           onRoomSold={this.handleSellingRoom}
@@ -109,6 +122,7 @@ export default class RoomControl extends React.Component {
             a.name.localeCompare(b.name)
           )}
         />
+      )
       buttonText = 'Add Room'
     }
     return (
