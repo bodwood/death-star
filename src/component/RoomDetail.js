@@ -16,3 +16,10 @@ function RoomDetail(props){
   </div>
  )
 }
+
+RoomDetail.propTypes = {
+ room: PropTypes.object,
+ onClickDelete: PropTypes.func,
+ onClickEdit: PropTypes.func,
+ onClickSell: PropTypes.func
+}
