@@ -60,6 +60,11 @@ export default class RoomControl extends React.Component {
    this.setState({formVisibleOnPage: false});
   }
 
+  handleChangingSelectedRoom = (id) => {
+   const selectedRoom = this.state.mainRoomList.filter(room => room.id === id)[0];
+   this.setState({selectedRoom: selectedRoom});
+  }
+
   handleSellingRoom = (id) => {
    let roomToEdit = this.state.mainRoomList.filter(room => room.id === id)[0];
    roomToEdit.stock > 0 ? roomToEdit.stock-- : alert("Room is not available");
@@ -87,6 +92,12 @@ export default class RoomControl extends React.Component {
     } else if(this.state.formVisibleOnPage) {
      currentlyVisibleState = <NewRoomForm onNewRoomCreation={this.handleAddingNewRoomToList} />
      buttonText= 'Return to Room List'
+    } else {
+     currentlyVisibleState = <RoomList
+     onRoomSelection={this.handleChangingSelectedRoom}
+     onRoomSold={this.handleSellingRoom}
+     roomList={this.state.mainRoomList.sort((a,b) => a.name.localeCompare(b.name))} />
+     buttonText= 'Add Room'
     }
   }
 }
