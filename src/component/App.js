@@ -1,13 +1,14 @@
-import logo from './logo.svg'
+import React from 'react'
 import Header from './Header'
-import './App.css'
+import RoomControl from './RoomControl';
 
 function App() {
   return (
-    <div className='wrapper'>
+    <div>
       <Header />
+      <RoomControl />
     </div>
-  )
+  );
 }
 
 export default App
