@@ -50,13 +50,15 @@ export default class RoomControl extends React.Component {
     let currentlyVisibleState = null
     let buttonText = null
     if (this.state.editing) {
-      currentlyVisibleState = (
+      currentlyVisibleState = 
         <EditRoomForm
           room={this.state.selectedRoom}
           onEditRoom={this.handleEditingRoomInList}
         />
-      )
       buttonText = 'Return to Room List'
+    } else if(this.state.selectedRoom != null) {
+      currentlyVisibleState = <RoomDetail room={this.state.selectedRoom} onClickingDelete={this.handleDeletingRoom} onClickingEdit={this.handleEditClick} onClickingSell={this.handleSellingRoom} />
+      buttonText= 'Return to Room List';
     }
   }
 }
