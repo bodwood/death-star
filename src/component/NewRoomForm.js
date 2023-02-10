@@ -26,4 +26,8 @@ function NewRoomForm(props) {
  )
 }
 
+NewRoomForm.protoTypes = {
+ onNewRoomCreation: PropTypes.func,
+}
+
 export default NewRoomForm;
