@@ -2,6 +2,7 @@ import React from "react";
 import NewRoomForm from "./NewRoomForm"
 import RoomList from "./RoomList"
 import RoomDetail from "./RoomDetail"
+import dataDefault from "../dataDefault"
 
 
 export default class RoomControl extends React.Component {
@@ -10,10 +11,14 @@ export default class RoomControl extends React.Component {
   super(props);
   this.state = {
    formVisibleOnPage: false,
-   mainRoomList: [],
+   mainRoomList: dataDefault.data.room.sort((a, b) => a.name.localeCompare(b.name)),
    selectedRoom: null,
    editing: false
   };
+ }
+
+ handleEditingRoomInList = (roomToEdit) => {
+  const fullRoomList = this.state.
  }
 
  render(){
