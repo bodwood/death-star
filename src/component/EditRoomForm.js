@@ -32,3 +32,5 @@ EditRoomForm.propTypes = {
   onEditRoom: PropTypes.func,
   room: PropTypes.object,
 }
+
+export default EditRoomForm;

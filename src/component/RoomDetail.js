@@ -23,3 +23,5 @@ RoomDetail.propTypes = {
  onClickEdit: PropTypes.func,
  onClickSell: PropTypes.func
 }
+
+export default RoomDetail

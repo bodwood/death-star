@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 function FormTemplate(props) {
   let titleForm = 'New Room'
   let idForm = ''
-  let editRoom = []
+  let roomToEdit = []
   if (props.editing) {
-    roomToRoom = props.room
+    roomToEdit = props.room
     titleForm = 'Edit ' + props.room.name
     idForm = props.room.id
   }
@@ -43,7 +43,7 @@ function FormTemplate(props) {
       <input
         type='number'
         name='price'
-        step='150'
+        step=''
         defaultValue={roomToEdit.price || ''}
       />
       <br />
@@ -56,6 +56,25 @@ function FormTemplate(props) {
         <option value='FireStone'>Fire Stone</option>
       </select>
       <br />
+
+      <label htmlFor='description'>Description: </label>
+      <input
+        type='text'
+        name='description'
+        placeholder='Room Description'
+        defaultValue={roomToEdit.description || ''}
+      />
+      <br />
+    
+      <br />
+      <input
+        type='number'
+        name='stock'
+        defaultValue={roomToEdit.stock || 12}
+      />
+      <br />
+
+      <button type='submit'>{props.buttonText}</button>
     </form>
   )
 }
@@ -66,4 +85,4 @@ FormTemplate.propTypes = {
   editing: PropTypes.bool,
 }
 
-export default FromTemplate
+export default FormTemplate

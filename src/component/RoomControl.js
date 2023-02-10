@@ -22,7 +22,7 @@ export default class RoomControl extends React.Component {
     if (this.state.selectedRoom != null) {
       this.setState({
         formVisibleOnPage: false,
-        selecteRoom: null,
+        selectedRoom: null,
         editing: false,
       })
     } else {
@@ -107,7 +107,7 @@ export default class RoomControl extends React.Component {
           onClickingSell={this.handleSellingRoom}
         />
       )
-      buttonText = 'Return to Room List'
+      buttonText = 'Return to Room '
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = (
         <NewRoomForm onNewRoomCreation={this.handleAddingNewRoomToList} />
