@@ -26,3 +26,5 @@ RoomList.propTypes = {
  roomList: PropTypes.array,
  onRoomSelection: PropTypes.func
 }
+
+export default RoomList;
