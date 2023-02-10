@@ -31,6 +31,14 @@ export default class RoomControl extends React.Component {
    }
   }
 
+  handleDeletingRoom = (id) => {
+   const updatedRoomList = this.state.mainRoomList.filter(room => room.id != id);
+   this.setState({
+    mainRoomList: updatedRoomList.sort((a,b) => a.name.localeCompare(b.name)),
+    selectedRoom: null
+   })
+  }
+
   hanldeEditClick = () => {
    this.setState({editing: true})
   }
