@@ -11,7 +11,7 @@ export default {
         "price": 150,
         "color": 'Flipper',
         "description": 'Sleek room that represents the Mandalorian of Mandalore',
-        "stock": 1,
+        "stock": 10,
       },
       {
         "id": v4(),
@@ -21,7 +21,7 @@ export default {
         "color": 'FireStone',
         "description":
           'A powerful room that represents the sith with come from Coruscant',
-        "stock": 1,
+        "stock": 10,
       },
       {
         "id": v4(),
@@ -30,7 +30,7 @@ export default {
         "price": 90,
         "color": 'Ashe',
         "description": 'Modern room that represents the strong Stormtroopers',
-        "stock": 12,
+        "stock": 10,
       },
       {
         "id": v4(),
@@ -40,7 +40,7 @@ export default {
         "color": 'SandPink',
         "description":
           'This room represents the Jedi.. Be careful with this room',
-        "stock": 2,
+        "stock": 10
       },
     ],
   },

@@ -78,7 +78,13 @@ export default class RoomControl extends React.Component {
 
   handleSellingRoom = (id) => {
     let roomToEdit = this.state.mainRoomList.filter((room) => room.id === id)[0]
-    roomToEdit.stock > 0 ? roomToEdit.stock-- : alert('Room is not available')
+    if(roomToEdit.stock < 5){
+     roomToEdit.stock--;
+     alert('Room availability is running low!')
+    } else if(roomToEdit > 0) {
+     roomToEdit--;
+     alert('Room is not available')
+    }
     const editedRoomList = this.state.mainRoomList
       .filter((room) => room.id !== id)
       .concat(roomToEdit)
@@ -128,7 +134,7 @@ export default class RoomControl extends React.Component {
     return (
       <main>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <button onClick={this.handleClick} className="mainButton">{buttonText}</button>
       </main>
     )
   }
