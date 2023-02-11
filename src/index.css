@@ -3,6 +3,7 @@ body {
   background-image: url("../src/images/DeathStarImg.jpg");
   color: White;
   text-align: center;
+  font-family: 'Prompt', sans-serif;
 }
 
 main {
@@ -39,6 +40,6 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: white;
 }
