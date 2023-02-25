@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function RoomDetail(props) {
@@ -11,21 +10,23 @@ function RoomDetail(props) {
         {room.name} - {room.origin} - {room.color} - ${room.price} - Stock: {room.stock} left
       </h2>
       {room.stock <= 0 ? (
-        <button className='unavailable'>
-          Unavailable
-        </button>
+        <button className='unavailable'>Unavailable</button>
       ) : (
-        <button onClick={() => onClickingSell(room.id)}>Rent Room - {room.stock} left</button>
+        <button className='room-card-button' onClick={() => onClickingSell(room.id)}>
+          Rent Room - {room.stock} left
+        </button>
       )}
-      <button onClick={onClickingEdit}>Edit Room</button>
-      <button onClick={() => onClickingDelete(room.id)}>Remove Room</button>
+      <button className='room-card-button' onClick={onClickingEdit}>
+        Edit Room
+      </button>
+      <button className='room-card-button' onClick={() => onClickingDelete(room.id)}>
+        Remove Room
+      </button>
       <p>{room.description}</p>
       <p></p>
     </div>
   );
- }
- 
-
+}
 
 RoomDetail.propTypes = {
   room: PropTypes.object,

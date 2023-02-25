@@ -21,7 +21,7 @@ function NewRoomForm(props) {
             color: e.target.color.value,
             description: e.target.description.value,
             id: v4(),
-            stock: 0,
+            stock: e.target.stock.value,
           })
         : alert('All fields are required.');
       return;

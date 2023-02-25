@@ -14,7 +14,6 @@ function FormTemplate(props) {
   return (
     <form onSubmit={props.formSubmissionHandler} className='form'>
       <div className='form-header'>
-        <h1>Room</h1>
         <div className='form-title'>
           <h1>{titleForm}</h1>
           <p>id: {idForm}</p>
@@ -22,30 +21,15 @@ function FormTemplate(props) {
       </div>
 
       <label htmlFor='name'>Name: </label>
-      <input
-        type='text'
-        name='name'
-        placeholder='Room Name'
-        defaultValue={roomToEdit.name || ''}
-      />
+      <input type='text' name='name' placeholder='Room Name' defaultValue={roomToEdit.name || ''} />
       <br />
 
       <label htmlFor='origin'>Origin: </label>
-      <input
-        type='text'
-        name='origin'
-        placeholder='Room Origin'
-        defaultValue={roomToEdit.origin || ''}
-      />
+      <input type='text' name='origin' placeholder='Room Origin' defaultValue={roomToEdit.origin || ''} />
       <br />
 
       <label htmlFor='price'>Price: </label>
-      <input
-        type='number'
-        name='price'
-        step=''
-        defaultValue={roomToEdit.price || ''}
-      />
+      <input type='number' name='price' min='0' step='' defaultValue={roomToEdit.price || ''} />
       <br />
 
       <label htmlFor='color'>Room Style i.e. paint color: </label>
@@ -65,19 +49,17 @@ function FormTemplate(props) {
         defaultValue={roomToEdit.description || ''}
       />
       <br />
-    
+
       <br />
-      <label htmlFor="stock">Stock</label>
-      <input
-        type='number'
-        name='stock'
-        defaultValue={roomToEdit.stock || 0}
-      />
+      <label htmlFor='stock'>Stock</label>
+      <input type='number' name='stock' min='0' defaultValue={roomToEdit.stock || 0} />
       <br />
 
-      <button type='submit'>{props.buttonText}</button>
+      <button className='room-card-button' type='submit'>
+        {props.buttonText}
+      </button>
     </form>
-  )
+  );
 }
 
 FormTemplate.propTypes = {
