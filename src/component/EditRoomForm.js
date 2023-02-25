@@ -1,21 +1,31 @@
-import React from 'react'
-import FormTemplate from './FormTemplate'
-import PropTypes from 'prop-types'
+import React from 'react';
+import FormTemplate from './FormTemplate';
+import PropTypes from 'prop-types';
 
 function EditRoomForm(props) {
-  const { room } = props
+  const { room } = props;
 
   function handleEditRoomFormSubmission(event) {
-    event.preventDefault()
-    props.onEditRoom({
-      name: event.target.name.value,
-      origin: event.target.origin.value,
-      price: event.target.price.value,
-      color: event.target.color.value,
-      description: event.target.description.value,
-      id: room.id,
-      stock: parseInt(event.target.stock.value),
-    })
+    event.preventDefault();
+    const stockProperty = event.target.stock.value;
+    const stockIsNum = null;
+    if (isNaN(stockProperty) || stockProperty === '') {
+      alert('Please enter a valid number for stock.');
+    }
+    if(stockProperty < 0 )
+    {
+      alert('Stock must have a value of at least 0')
+    }else {
+      props.onEditRoom({
+        name: event.target.name.value,
+        origin: event.target.origin.value,
+        price: event.target.price.value,
+        color: event.target.color.value,
+        description: event.target.description.value,
+        stock: stockIsNum,
+        id: room.id,
+      });
+    }
   }
 
   return (
@@ -25,12 +35,12 @@ function EditRoomForm(props) {
       room={room}
       editing={true}
     />
-  )
+  );
 }
 
 EditRoomForm.propTypes = {
   onEditRoom: PropTypes.func,
   room: PropTypes.object,
-}
+};
 
 export default EditRoomForm;

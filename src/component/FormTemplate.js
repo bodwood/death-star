@@ -70,7 +70,7 @@ function FormTemplate(props) {
       <input
         type='number'
         name='stock'
-        defaultValue={roomToEdit.stock || 12}
+        defaultValue={roomToEdit.stock || null}
       />
       <br />
 

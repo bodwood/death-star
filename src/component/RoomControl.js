@@ -55,7 +55,7 @@ export default class RoomControl extends React.Component {
     this.setState({
       mainRoomList: editedRoomList.sort((a, b) => a.name.localeCompare(b.name)),
       editing: false,
-      selecteRoom: null,
+      selectedRoom: null,
     })
   }
 
@@ -73,6 +73,7 @@ export default class RoomControl extends React.Component {
     const selectedRoom = this.state.mainRoomList.filter(
       (room) => room.id === id
     )[0]
+    
     this.setState({ selectedRoom: selectedRoom })
   }
 
@@ -107,7 +108,7 @@ export default class RoomControl extends React.Component {
           onClickingSell={this.handleSellingRoom}
         />
       )
-      buttonText = 'Return to Room '
+      buttonText = 'Return to Room List '
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = (
         <NewRoomForm onNewRoomCreation={this.handleAddingNewRoomToList} />
