@@ -73,7 +73,6 @@ export default class RoomControl extends React.Component {
     const selectedRoom = this.state.mainRoomList.filter(
       (room) => room.id === id
     )[0]
-    
     this.setState({ selectedRoom: selectedRoom })
   }
 

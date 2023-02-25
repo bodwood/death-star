@@ -67,10 +67,11 @@ function FormTemplate(props) {
       <br />
     
       <br />
+      <label htmlFor="stock">Stock</label>
       <input
         type='number'
         name='stock'
-        defaultValue={roomToEdit.stock || null}
+        defaultValue={roomToEdit.stock || 0}
       />
       <br />
 

@@ -11,6 +11,7 @@ function EditRoomForm(props) {
     const stockIsNum = null;
     if (isNaN(stockProperty) || stockProperty === '') {
       alert('Please enter a valid number for stock.');
+      return
     }
     if(stockProperty < 0 )
     {
@@ -22,7 +23,7 @@ function EditRoomForm(props) {
         price: event.target.price.value,
         color: event.target.color.value,
         description: event.target.description.value,
-        stock: stockIsNum,
+        stock: stockProperty,
         id: room.id,
       });
     }
